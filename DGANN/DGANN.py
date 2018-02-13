@@ -1,11 +1,11 @@
 #
-# ev3.py: An elitist (mu+mu) generational-with-overlap EA
+# ev.py: An elitist (mu+mu) generational-with-overlap EA
 #
 #
-# To run: python ev3.py --input ev3_example.cfg
-#         python ev3.py --input my_params.cfg
+# To run: python ev.py --input ev3_example.cfg
+#         python ev.py --input my_params.cfg
 #
-# Basic features of ev3:
+# Basic features of ev:
 #   - Supports self-adaptive mutation
 #   - Uses binary tournament selection for mating pool
 #   - Uses elitist truncation selection for survivors
@@ -25,9 +25,9 @@ import time
 
 
 #EV3 Config class 
-class EV3_Config:
+class EV_Config:
     """
-    EV3 configuration class
+    EV configuration class
     """
     # class variables
     sectionName='DGANN'
@@ -128,6 +128,24 @@ class ANN:
     def __sigmoid(self, x):
         return 1 / (1 + np.exp(-x))
 
+#ANN initialization
+#Create layer 1 
+layer1neurons=4
+layer1inputs=3
+layer1 = NeuronLayer(layer1neurons, layer1inputs)
+    
+#Create layer 2
+layer2neurons=1
+layer2inputs=layer1neurons
+layer2 = NeuronLayer(layer2neurons, layer2inputs)
+    
+#Set ANN
+ANN.layer1=layer1
+ANN.layer2=layer2
+ANN.target=[[0, 1, 1, 1, 1, 0, 0]]
+ANN.input=[[0, 0, 1], [0, 1, 1], [1, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 1], [0, 0, 0]]
+ANN.length=len(ANN.target[0])
+
 #Print some useful stats to screen
 def printStats(pop,island):
     print('Island:',island)
@@ -176,7 +194,7 @@ def bestIndividual(Populations):
 
 #EV3:
 #            
-def ev3(cfg):
+def ev(cfg):
     
     #start random number generators
     uniprng=Random()
@@ -249,23 +267,6 @@ def ev3(cfg):
     return population, avgfitness
 
 def parallelEV(cfg):
-    #Create layer 1 
-    layer1neurons=4
-    layer1inputs=3
-    layer1 = NeuronLayer(layer1neurons, layer1inputs)
-    
-    #Create layer 2
-    layer2neurons=1
-    layer2inputs=layer1neurons
-    layer2 = NeuronLayer(layer2neurons, layer2inputs)
-    
-    #Set ANN
-    ANN.layer1=layer1
-    ANN.layer2=layer2
-    ANN.target=[[0, 1, 1, 1, 1, 0, 0]]
-    ANN.input=[[0, 0, 1], [0, 1, 1], [1, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 1], [0, 0, 0]]
-    ANN.length=len(ANN.target[0])
-        
     #parallel EV
     p=Pool(processes=4)
         
@@ -273,9 +274,9 @@ def parallelEV(cfg):
     populationCfgs=[]
     for i in range(cfg.numberOfIslands):
         populationCfgs.append((cfg, cfg.randomSeed+67*i, True, None, None))
-        
+
     #each island evolve in first epoch    
-    Populations=p.map(ev3, populationCfgs)
+    Populations=p.map(ev, populationCfgs)
     
     #record average fitness per island
     Avgfit=[]
@@ -292,7 +293,7 @@ def parallelEV(cfg):
         for i in range(cfg.numberOfIslands):
             populationCfgs.append((cfg, cfg.randomSeed+67*i, False, Populations[i][0], None))
             
-        Populations=p.map(ev3, populationCfgs)
+        Populations=p.map(ev, populationCfgs)
             
         #record average
         for i in range(cfg.numberOfIslands):
@@ -303,7 +304,7 @@ def parallelEV(cfg):
     for i in range(cfg.numberOfIslands):
         populationCfgs.append((cfg, cfg.randomSeed+67*i, False, Populations[i][0], cfg.generationCount-cfg.frequencyOfEpochs*(cfg.numberOfEpochs)-4))
         
-    Populations=p.map(ev3, populationCfgs)
+    Populations=p.map(ev, populationCfgs)
         
     #record average
     for i in range(cfg.numberOfIslands):
@@ -340,6 +341,7 @@ def parallelEV(cfg):
 #
 # Main entry point
 #
+'''
 def main(argv=None):
     if argv is None:
         argv = sys.argv
@@ -355,14 +357,11 @@ def main(argv=None):
         (options, args) = parser.parse_args(argv)
         
         #validate options
-        '''
         if options.inputFileName is None:
             raise Exception("Must specify input file name using -i or --input option.")
         
         #Get EV3 config params
-        cfg=EV3_Config(options.inputFileName)
-        '''
-        cfg=EV3_Config('DGANN.cfg')
+        cfg=EV_Config(options.inputFileName)
         
         #print config params
         print(cfg)
@@ -382,7 +381,18 @@ def main(argv=None):
             print_exc()
         else:
             print(info)
+'''
+
+def main():
+    cfg=EV_Config('DGANN.cfg')
+    print(cfg)
     
+    tstart=time.time()
+    parallelEV(cfg)
+    tend=time.time()
+    
+    print('time elapsed',tend-tstart)
+    print('EV Completed!')
 
 if __name__ == '__main__':
     main()

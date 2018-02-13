@@ -1,11 +1,11 @@
 #
-# ev3.py: An elitist (mu+mu) generational-with-overlap EA
+# ev.py: An elitist (mu+mu) generational-with-overlap EA
 #
 #
-# To run: python ev3.py --input GANN.cfg
-#         python ev3.py --input my_params.cfg
+# To run: python ev.py --input GANN.cfg
+#         python ev.py --input my_params.cfg
 #
-# Basic features of ev3:
+# Basic features of ev:
 #   - Supports self-adaptive mutation
 #   - Uses binary tournament selection for mating pool
 #   - Uses elitist truncation selection for survivors
@@ -23,9 +23,9 @@ import matplotlib.pyplot as plt
 import time
 
 #EV3 Config class 
-class EV3_Config:
+class EV_Config:
     """
-    EV3 configuration class
+    EV configuration class
     """
     # class variables
     sectionName='EV3'
@@ -150,7 +150,7 @@ def calculateAvgFitness(pop):
     
 #EV3:
 #            
-def ev3(cfg):
+def ev(cfg):
     
     #start random number generators
     uniprng=Random()
@@ -264,14 +264,14 @@ def main(argv=None):
             raise Exception("Must specify input file name using -i or --input option.")
         
         #Get EV3 config params
-        cfg=EV3_Config(options.inputFileName)
+        cfg=EV_Config(options.inputFileName)
         
         #print config params
         print(cfg)
         
         tstart=time.time()            
         #run EV3
-        ev3(cfg)
+        ev(cfg)
         tend=time.time()
         
         print('time elapse',tend-tstart)
@@ -287,15 +287,15 @@ def main(argv=None):
 '''
 
 def main():
-    cfg=EV3_Config('GANN.cfg')
+    cfg=EV_Config('GANN.cfg')
     print(cfg)
     
     tstart=time.time() 
-    ev3(cfg)
+    ev(cfg)
     tend=time.time()
     
     print('time elapse',tend-tstart)
-    print('EV3 Completed!')
+    print('EV Completed!')
 
 if __name__ == '__main__':
     main()
