@@ -10,27 +10,33 @@ The ANN has to compute the relationship between Input and Output. After the ANN 
 ## Using genetic algorithm to solve the problem
 
 The original ANN topology I set
+
 ![Original_topology](https://github.com/LukeLinn/EV_project/blob/master/picture/original_topology.png)
 
 The individual in GA
+
 ![Individual](https://github.com/LukeLinn/EV_project/blob/master/picture/individual.png)
 
 There are 19 weights in this topology. Besides weights, there are 19 links to be optimized. 1 means connected and 0 means not.
 
 Optimized topology by GA
+
 ![GA](https://github.com/LukeLinn/EV_project/blob/master/picture/GA.png)
 
 Figure for Average fitness of all indivials in GA to generation
+
 ![GA_figure](https://github.com/LukeLinn/EV_project/blob/master/picture/GANN.png)
 
 ## Improve GA with Parallel Programming
 
 Island model topology
+
 ![Island_model](https://github.com/LukeLinn/EV_project/blob/master/picture/island_model.png)
 
 I implement multiprocess to improve GA. Four processes here handle four population. The numbers near each nodes are the randomseed I set.
 
 Figure for Average fitness of 4 islands to generation
+
 ![Island_model_GA](https://github.com/LukeLinn/EV_project/blob/master/picture/island_model_GA.png)
 
 ## Reference
