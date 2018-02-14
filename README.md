@@ -44,7 +44,7 @@ python DGANN.py
 
 ## Python modules used
 
-* yanl
+* yaml
 * numpy
 * matplotlib
 
