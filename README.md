@@ -5,39 +5,51 @@ This project is to opitmize topology and weights of artificial neural network (A
 ## Problem formulation
 
 The ANN has to compute the relationship between Input and Output. After the ANN is trained, I'll give the ANN a new situation and the ANN has to solve the problem.
-![Problem](https://github.com/LukeLinn/EV_project/blob/master/picture/problem.png)
+![Problem](https://github.com/LukeLinn/EV_project/blob/master/figure/problem.png)
 
 ## Using genetic algorithm to solve the problem
 
 The original ANN topology I set
 
-![Original_topology](https://github.com/LukeLinn/EV_project/blob/master/picture/original_topology.png)
+![Original_topology](https://github.com/LukeLinn/EV_project/blob/master/figure/original_topology.png)
 
 The individual in GA
 
-![Individual](https://github.com/LukeLinn/EV_project/blob/master/picture/individual.png)
+![Individual](https://github.com/LukeLinn/EV_project/blob/master/figure/individual.png)
 
 There are 19 weights in this topology. Besides weights, there are 19 links to be optimized. 1 means connected and 0 means not.
 
-Optimized topology by GA
+Optimized topology by GA and figure for Average fitness of all indivials in GA to generation
 
-![GA](https://github.com/LukeLinn/EV_project/blob/master/picture/GA.png)
+![GA](https://github.com/LukeLinn/EV_project/blob/master/figure/GANN.png)
 
-Figure for Average fitness of all indivials in GA to generation
+## Island model GA - Improve GA with Parallel Programming
 
-![GA_figure](https://github.com/LukeLinn/EV_project/blob/master/picture/GANN.png)
+I implement multiprocess to improve GA. I implement four processes to handle four population.
 
-## Improve GA with Parallel Programming
+Optimized topology by island model GA and figure for Average fitness of 4 islands to generation
 
-Island model topology
+![Island_model_GA](https://github.com/LukeLinn/EV_project/blob/master/figure/DGANN.png)
 
-![Island_model](https://github.com/LukeLinn/EV_project/blob/master/picture/island_model.png)
+## Running the project
 
-I implement multiprocess to improve GA. Four processes here handle four population. The numbers near each nodes are the randomseed I set.
+To see the result of GA
+```
+cd GANN
+python GANN.py
+```
 
-Figure for Average fitness of 4 islands to generation
+To see the result of island model GA
+```
+cd DGANN
+python DGANN.py
+```
 
-![Island_model_GA](https://github.com/LukeLinn/EV_project/blob/master/picture/island_model_GA.png)
+## Python modules used
+
+* yanl
+* numpy
+* matplotlib
 
 ## Reference
 
