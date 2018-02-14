@@ -9,10 +9,6 @@ The ANN has to compute the relationship between Input and Output. After the ANN 
 
 ## Using genetic algorithm to solve the problem
 
-The original ANN topology I set
-
-![Original_topology](https://github.com/LukeLinn/EV_project/blob/master/figure/original_topology.png)
-
 The individual in GA
 
 ![Individual](https://github.com/LukeLinn/EV_project/blob/master/figure/individual.png)
