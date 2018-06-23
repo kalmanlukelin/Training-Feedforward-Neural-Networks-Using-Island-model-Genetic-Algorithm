@@ -5,20 +5,20 @@ This project is to opitmize topology and weights of artificial neural network (A
 ## Problem formulation
 
 The ANN has to compute the relationship between Input and Output. After the ANN is trained, I'll give the ANN a new situation and the ANN has to solve the problem.
-![Problem](https://github.com/LukeLinn/EV_project/blob/master/figure/problem.png)
+![Problem](https://github.com/LukeLinn/EV_project/blob/master/Figure/problem.png)
 
 ## Using genetic algorithm to solve the problem
 
 There are 19 weights in this topology. Besides weights, there are 19 links to be optimized. 1 means connected and 0 means not. The below is the individual in GA.
-![Individual](https://github.com/LukeLinn/EV_project/blob/master/figure/individual.png)
+![Individual](https://github.com/LukeLinn/EV_project/blob/master/Figure/individual.png)
 
 The below are the figure for average fitness of all indivials to generation and the optimized topology:
-![GA](https://github.com/LukeLinn/EV_project/blob/master/figure/GANN.png)
+![GA](https://github.com/LukeLinn/EV_project/blob/master/Figure/GANN.png)
 
 ## Island model GA - Improve GA with Parallel Programming
 
-I implement multiprocess to handle four population to add variety of GA. The below are the figure for average fitness of 4 islands to generation and the optimized topology by island model GA.
-![Island_model_GA](https://github.com/LukeLinn/EV_project/blob/master/figure/DGANN.png)
+I implement multiprocess to handle four population to add variety of GA. The below are the Figure for average fitness of 4 islands to generation and the optimized topology by island model GA.
+![Island_model_GA](https://github.com/LukeLinn/EV_project/blob/master/Figure/DGANN.png)
 
 ## Python modules used
 
