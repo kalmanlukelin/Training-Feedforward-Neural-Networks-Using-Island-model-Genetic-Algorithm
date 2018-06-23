@@ -1,10 +1,4 @@
-'''
-Created on 2017年5月9日
-
-@author: Luke
-'''
 from numpy import exp, array, random, dot
-
 
 class NeuralNetwork():
     def __init__(self):

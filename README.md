@@ -17,9 +17,7 @@ The below are the figure for average fitness of all indivials to generation and 
 
 ## Island model GA - Improve GA with Parallel Programming
 
-I implement multiprocess to handle four population to add variety of GA. 
-
-The below are the figure for average fitness of 4 islands to generation and the optimized topology by island model GA.
+I implement multiprocess to handle four population to add variety of GA. The below are the figure for average fitness of 4 islands to generation and the optimized topology by island model GA.
 ![Island_model_GA](https://github.com/LukeLinn/EV_project/blob/master/figure/DGANN.png)
 
 ## Python modules used
