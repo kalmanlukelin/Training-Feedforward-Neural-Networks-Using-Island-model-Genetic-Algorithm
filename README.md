@@ -7,7 +7,15 @@ This project is to opitmize topology and weights of artificial neural network (A
 The ANN has to compute the relationship between Input and Output. After the ANN is trained, I'll give the ANN a new situation and the ANN has to solve the problem.
 ![Problem](https://github.com/LukeLinn/EV_project/blob/master/Figure/problem.png)
 
-## Using genetic algorithm to solve the problem
+##　Executive summary
+
+Island model GA has the best accuracy. The following is the absolute difference between the output of the neural network and the target value.
+
+* Backpropagation: 7.89*10^-3
+* GA: 1.69*10^-11
+* Island model GA: 1.74*10^-18
+
+## Using GA to solve the problem
 
 There are 19 weights in this topology. Besides weights, there are 19 links to be optimized. 1 means connected and 0 means not. The below is the individual in GA.
 ![Individual](https://github.com/LukeLinn/EV_project/blob/master/Figure/individual.png)
