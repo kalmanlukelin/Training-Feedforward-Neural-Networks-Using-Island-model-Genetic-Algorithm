@@ -1,4 +1,4 @@
-# Evolutionary Computing Project 
+# Training Feedforward Neural Networks Using Island model Genetic Algorithm
 
 This project is to opitmize topology and weights of artificial neural network (ANN) using genetic algorithm(GA) with Python.
 
